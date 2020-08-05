@@ -57,5 +57,7 @@ public class Person {
     public double getCash() {
         return this.cash;
     }
-
+    public String toString() {
+        return this.name + " " + this.surname;
+    }
 }

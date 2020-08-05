@@ -1,17 +1,23 @@
 public class Car implements Vehicle {
-    
+
     //instance variables
     String numberPlate;
     String color;
     String model;
     String type;
     double base_rate;
-    //constructors
+
+    //constructor
     Car(String numberPlate, String color, String model, String type) {
         this.numberPlate = numberPlate;
         this.color = color;
         this.model = model;
         this.type = type;
+        if(type.equals("XL")) {
+            this.base_rate = 15.00;
+        } else {
+            this.base_rate = 10.00;
+        }
     }
 
     //methods
