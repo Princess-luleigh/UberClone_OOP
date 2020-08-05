@@ -1,0 +1,14 @@
+licenseID, name, surname, phone_number, cash, numberPlate, color, model, type
+license123, thando, mndlane, 0748086755, 1000, ca123, white, BMW X6, XL
+license124, melokuhle, xalabile, 0731231234, 2000, ca124, green, Lamborghini, X
+license125, iminathi, tutuse, 0736737274, 3000, ca125, blue, bmwX5, XL
+license126, amukelani, baloyi, 0767857275, 5000, ca115	, yellow, Buggati, X
+license127, musa, prince, 0736737215, 9000, ca515, black, McClaren, XL
+license128, mixo, joseph, 0736716815, 12000, cp915, silver, AudiRS8, X
+license129, schumile, nomdimba, 0736712124, 12001, ct015, lime, AstonMartin, X
+license139, princess, baloyi, 0818940245, 12002	, cpt015, grey, bmwX6, XL
+license149, nazareth, ubisi, 0735211111, 12020, cpt025, black, RS3, XL
+license150, Cornelius, silver, 076712126	, 12030, cpt025, red, Toyota chr, XL
+license151, mandla, smindlo, 0686712126, 12050, cpt029, grey, TeslaModelX, X
+license152, sphiwe, khondo, 0634712126, 12930, cpt035, lightblue, RangeRover, XL
+license153, dudu, ntikilili, 0934712129, 13930, cpt045, blue, RangeRoverSportV8, XL
