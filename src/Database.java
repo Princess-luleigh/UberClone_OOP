@@ -1,22 +1,33 @@
 import java.io.*;
-import java.util.*;	
+
+/**
+ * CHECK: I know how to read and write to CSV 
+ * EXPLANATION: Create a BufferedReader and read the file line by line until an "End of File" (EOF) character is reached, Use the String.split() method to identify the comma delimiter and split the row into fields
+ */
 
 	public class Database {
-	
 
+    /** CHECK: I can create Instance variables and am able to to use another class type variable in another class
+    *  EXPLANATION: Instance variables store the objects states, these are important parts that must be held throughtout the class
+    * */
+	
 	    //attributes
 	    String filePathToCSV;
 	    int numberOfXL;
 	    int numberOfX;
 	    Driver[] drivers;
-	
+    
+    /** CHECK:I am able to create constructors and understand what a constructor does
+    *  EXPLANATION: Constructors initialise objects, similar to a method that's called when an instance of an object is created
+    * */ 
 
 	    //constructor
 	    Database() {}
 	
-
+        
 	    public int countLinesInCSV(final String filename) {
             int i = 0;
+            
             try {
                 final BufferedReader csvReader = new BufferedReader(new FileReader(filename));
                 String row = null;
@@ -108,11 +119,6 @@ import java.util.*;
 
 	        return XLdrivers;
 	
-
-
-
-
-
 	    }
 	}
 

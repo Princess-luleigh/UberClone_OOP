@@ -1,23 +1,36 @@
-	
+/**
+ * CHECK: I know how to use ArrayLists
+ * EXPLANATION: ArrayList class uses a dynamic array for storing the elements,  It inherits the AbstractList class and implements List interface.
+ * 
+ * CHECK: I know how to use arrays
+ * EXPLANATION:- Declare a variable to hold the array.
+               - Create a new array object and assign it to the array variable.
+               - Store things in that array
+ */
 	
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
-
-
+import java.util.Iterator;
+import java.util.Random;
 import com.google.gson.*;
-import java.util.*;
+
+/**
+ * CHECK: I understand Polymorphism
+ * EXPLANATION: Polymorphism is the ability of an object to take on many forms, occurs when we have many classes that are related to each other by inheritence
+ * 
+ * CHECK: I know how to use Polymorphism
+ * EXPLANATION: There is a parent class and child classes related to that class, make parent (main) class and child (subclasses) classes
+ */
 
 
-// response.rows[0].elements[0].distance.text
 public class UberRide extends Ride {
 
+/** CHECK: I can create Instance variables and am able to to use another class type variable in another class
+ *  EXPLANATION: Instance variables store the objects states, these are important parts that must be held throughtout the class
+ * */
 
     //instance variables
     String startpoint;
@@ -29,12 +42,16 @@ public class UberRide extends Ride {
     double distance;
 
 
-
-
     UberRide() {}
 
+/** CHECK:I am able to create constructors and understand what a constructor does
+ *  EXPLANATION: Constructors initialise objects, similar to a method that's called when an instance of an object is created
+ * */ 
 
-    UberRide(String startpoint, String endpoint, Passenger passenger){
+    /** CHECK: I can add other necessary functions for the class and am able to take in other class parameters e.g testFunction(Driver D, String s)
+     *  EXPLANATION: Takes in other funtions
+     */
+    UberRide(final String startpoint, final String endpoint, final Passenger passenger){
         super();
         this.startpoint = startpoint;
         this.endpoint = endpoint;
@@ -43,9 +60,6 @@ public class UberRide extends Ride {
         this.driver = null;
         this.passenger = passenger;
     }
-
-
-   
 
 
     public Driver assignDriver() {
@@ -58,18 +72,17 @@ public class UberRide extends Ride {
              * add driver to Driver[]
              */
 
-
+        /**CHECK: I have the ability to call created class objects e.g Car c = new Car()
+         * */
         //call the function that return random driver
-
-
-        Database DB = new Database();
+        final Database DB = new Database();
         DB.getDriversArray();
-        Driver[] drivers = DB.getArrayByVehicleType("XL");
+        final Driver[] drivers = DB.getArrayByVehicleType("XL");
         // DB.printArray(drivers);
 
 
-        Random ran = new Random();
-        int randomIndex = ran.nextInt(drivers.length-1);
+        final Random ran = new Random();
+        final int randomIndex = ran.nextInt(drivers.length-1);
 
 
         this.driver = drivers[randomIndex];
@@ -77,7 +90,7 @@ public class UberRide extends Ride {
         return drivers[randomIndex];
     }
     
-    public void completePayment(Driver driver, Passenger passenger) {
+    public void completePayment(final Driver driver, final Passenger passenger) {
        /**
         * Add money to driver
         * Deduct money from passenger
@@ -85,24 +98,24 @@ public class UberRide extends Ride {
 
 
         
-        double driverBalance = driver.getCash();
+        final double driverBalance = driver.getCash();
         driver.setCash(driverBalance + this.price);
         System.out.println("Adding R" + (int)this.price + " to driver account. Account bal: R" + driver.getCash());
 
 
-        double passengerBalance = passenger.getCash();
+        final double passengerBalance = passenger.getCash();
         passenger.setCash(passengerBalance - this.price);
         System.out.println("Deducting R" + (int)this.price + " from passenger account. Account bal: R" + passenger.getCash());
     }
 
 
-    public double calculateDistance(String startingPoint, String endingPoint) {
+    public double calculateDistance(final String startingPoint, final String endingPoint) {
         double distance = 0.0;
         try {
-            UberRide uberRide = new UberRide();
+            final UberRide uberRide = new UberRide();
             distance = uberRide.MyGETRequest(startingPoint, endingPoint);
         }
-        catch(IOException ex){
+        catch(final IOException ex){
             System.out.println (ex.toString());
         }
 
@@ -111,49 +124,44 @@ public class UberRide extends Ride {
         System.out.println("The distance is: " + this.distance + " km");
         return (distance/1000);
     }
-    public double calculateCost(String startingPoint, String endingPoint) {
+    public double calculateCost(final String startingPoint, final String endingPoint) {
 
 
         double cost = 0.0;
-        UberRide uberRide = new UberRide();
-        double distance = uberRide.calculateDistance(startingPoint, endingPoint);
+        final UberRide uberRide = new UberRide();
+        final double distance = uberRide.calculateDistance(startingPoint, endingPoint);
         cost = distance * this.driver.getCar().getBaseRate();
         this.price = cost;
         System.out.println("The cost is: R" + (int)this.price);
         return cost;
     }
-    public double MyGETRequest(String startingPoint, String endingPoint) throws IOException {
-        URL urlForGetRequest = new URL("https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + startingPoint +",SA&destinations=" + endingPoint + ",SA&departure_time=now&key=AIzaSyCs2UIPeA_ygj6aDL45ta9ZdJu3Mo1PIOs");
+    public double MyGETRequest(final String startingPoint, final String endingPoint) throws IOException {
+        final URL urlForGetRequest = new URL("https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + startingPoint +",SA&destinations=" + endingPoint + ",SA&departure_time=now&key=AIzaSyCs2UIPeA_ygj6aDL45ta9ZdJu3Mo1PIOs");
         String readLine = null;
-        HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+        final HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
         conection.setRequestMethod("GET");
-        int responseCode = conection.getResponseCode();
+        final int responseCode = conection.getResponseCode();
 
 
 
 
-        UberRide uberRide = new UberRide();
+        final UberRide uberRide = new UberRide();
         double distance = 0.0;
         if (responseCode == HttpURLConnection.HTTP_OK) {
-            BufferedReader in = new BufferedReader(
+            final BufferedReader in = new BufferedReader(
                 new InputStreamReader(conection.getInputStream()));
-            StringBuffer response = new StringBuffer();
+            final StringBuffer response = new StringBuffer();
             while ((readLine = in.readLine()) != null) {
                 response.append(readLine);
             } in .close();
 
 
-            String distanceAsString = uberRide.retrieveDistanceAsString(response.toString());
+            final String distanceAsString = uberRide.retrieveDistanceAsString(response.toString());
             distance = Double.parseDouble(distanceAsString);
         } else {
             // response = error;
             System.out.println("GET NOT WORKED");
         }
-
-
-        
-        
-
 
         return distance;
     }
@@ -163,10 +171,10 @@ public class UberRide extends Ride {
      * getAsJsonObject
      * getAsJsonArray
      */
-    public String retrieveDistanceAsString(String jsonString) {
-        GsonBuilder builder = new GsonBuilder(); 
+    public String retrieveDistanceAsString(final String jsonString) {
+        final GsonBuilder builder = new GsonBuilder(); 
         builder.setPrettyPrinting(); 
-        Gson gson = builder.create(); 
+        final Gson gson = builder.create(); 
         JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class); 
         JsonArray jsonArray = jsonObject.getAsJsonArray("rows");
            
@@ -183,20 +191,9 @@ public class UberRide extends Ride {
              je = iterator.next();
              jsonObject = je.getAsJsonObject().get("distance").getAsJsonObject();
 
-
-
-
-
-
-
-
-
          }
 
-
          return jsonObject.get("value")+"";
-
-
 
 
     }

@@ -45,7 +45,9 @@ import java.util.*;
 	        System.out.println("Assigned car: " + assignedDriver.getCar());
 	        
 	        System.out.println("\nYour ride is complete. Processing payment...");
-	        uberRide.completePayment(assignedDriver, lulamani);
+			uberRide.completePayment(assignedDriver, lulamani);
+			
+			sc.close();
         }
 
 
